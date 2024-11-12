@@ -1,0 +1,11 @@
+/* src/app/app.component.css */
+.app-container {
+    display: flex;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Adjust based on sidebar width */
+  }
+  

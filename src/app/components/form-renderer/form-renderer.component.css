@@ -1,0 +1,17 @@
+form div {
+    margin: 10px 0;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+  form div:hover {
+    background-color: lightgrey;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+  }
+  

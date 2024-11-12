@@ -1,0 +1,196 @@
+/* Main container that holds all three sections */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style for the left-aligned column */
+.left-align {
+  width: 20%; /* Adjust width as needed */
+  background-color: #f1f1f1;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Style for the main content area */
+.container {
+  width: 55%; /* Adjust width as needed */
+  background-color: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Style for the right-aligned column */
+.right-align {
+  width: 20%; /* Adjust width as needed */
+  background-color: #f1f1f1;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.add-field-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+  
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+    right: 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+  
+.search-box {
+    width: 100%; /* Make search box take full width of dropdown */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+  
+.dropdown-menu ul {
+    list-style-type: none; /* Remove dots */
+    padding: 0;
+    margin: 0;
+}
+  
+.dropdown-menu ul li {
+    padding: 12px 16px; /* Increase padding for more space */
+    cursor: pointer;
+    color: #333;
+    font-size: 16px; /* Adjust font size if needed */
+  }
+  
+.dropdown-menu ul li:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.right-section {
+    position: relative;
+    width: 200px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+  
+.input-container input {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.left-align ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.left-align li {
+  padding: 5px 0;
+    cursor: pointer;
+}
+  
+.left-align li:hover {
+    background-color: #f0f0f0;
+}
+
+.fields-grid {
+    display: grid;
+    gap: 10px;
+}
+  
+.field-item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+  
+  .align-center label {
+    text-align: center;
+    display: block;
+  }
+  
+  .align-right label {
+    text-align: right;
+    display: block;
+  }
+  
+  .align-side-by-side label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .align-top label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .align-bottom label {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .left-button, .right-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .dropdown-container {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style: none;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .left-align { text-align: left; }
+  .center-align { text-align: center; }
+  .right-align { text-align: right; }
+  
+  
+  

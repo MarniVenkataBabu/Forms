@@ -1,0 +1,68 @@
+<div>
+    <h2>Create Form Fields</h2>
+    
+    <div>
+      <label>Field Type:</label>
+      <select [(ngModel)]="newField.type">
+        <option value="text">Text</option>
+        <option value="email">Email</option>
+        <option value="password">Password</option>
+      </select>
+    </div>
+    
+    <div>
+      <label>Label:</label>
+      <input [(ngModel)]="newField.label" type="text" />
+    </div>
+    
+    <div>
+      <label>Placeholder:</label>
+      <input [(ngModel)]="newField.placeholder" type="text" />
+    </div>
+    
+    <div>
+      <label>Width (e.g., 100%, 200px):</label>
+      <input [(ngModel)]="newField.width" type="text" />
+    </div>
+  
+    <div>
+      <label>Text Align:</label>
+      <select [(ngModel)]="newField.textAlign">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+      </select>
+    </div>
+  
+    <div>
+      <label>Background Color:</label>
+      <input [(ngModel)]="newField.backgroundColor" type="color" />
+    </div>
+  
+    <div>
+      <label>Hover Color:</label>
+      <input [(ngModel)]="newField.hoverColor" type="color" />
+    </div>
+  
+    <div>
+      <label>Max Length:</label>
+      <input [(ngModel)]="newField.maxLength" type="number" />
+    </div>
+  
+    <div>
+      <label>Required:</label>
+      <input [(ngModel)]="newField.isRequired" type="checkbox" />
+    </div>
+  
+    <button (click)="addField()">Add Field</button>
+    <button (click)="generateJson()">Generate JSON</button>
+  
+    <h3>Preview</h3>
+    <ul>
+      <li *ngFor="let field of fields">
+        <label>{{ field.label }}</label>
+        <input [type]="field.type" [placeholder]="field.placeholder" [style.width]="field.width" />
+      </li>
+    </ul>
+  </div>
+  

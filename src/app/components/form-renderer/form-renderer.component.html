@@ -1,0 +1,15 @@
+<div>
+    <h2>Upload Form JSON</h2>
+    <input type="file" (change)="loadJson($event)" accept=".json" />
+  </div>
+  
+  <div *ngIf="fields.length > 0">
+    <h3>Rendered Form</h3>
+    <form>
+      <div *ngFor="let field of fields" [style.textAlign]="field.textAlign" [style.backgroundColor]="field.backgroundColor" [style.width]="field.width">
+        <label>{{ field.label }} <span *ngIf="field.isRequired">*</span></label>
+        <input [type]="field.type" [placeholder]="field.placeholder" [maxLength]="field.maxLength" [required]="field.isRequired" />
+      </div>
+    </form>
+  </div>
+  

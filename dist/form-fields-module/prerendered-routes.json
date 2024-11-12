@@ -1,0 +1,13 @@
+{
+  "routes": [
+    "/",
+    "/company-information",
+    "/form-builder",
+    "/form-creation",
+    "/form-render",
+    "/grants-information",
+    "/login-form",
+    "/personal-information",
+    "/side-nav"
+  ]
+}

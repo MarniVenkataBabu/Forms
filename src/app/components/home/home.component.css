@@ -1,0 +1,9 @@
+/* src/app/home/home.component.css */
+.container {
+    padding: 20px;
+    text-align: center;
+  }
+  h2 {
+    color: #4caf50;
+  }
+  

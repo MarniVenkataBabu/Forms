@@ -1,0 +1,39 @@
+<div class="example-container">
+    <h2>Form Creation</h2>
+  
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of todo; trackBy: trackByFn" class="example-box" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Form Fields</h2>
+  
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div
+        *ngFor="let item of done; trackBy: trackByFn"
+        class="example-box"
+        cdkDrag
+        (click)="moveToTodo(item)"
+      >
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  

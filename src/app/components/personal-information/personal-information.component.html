@@ -1,0 +1,32 @@
+<div class="personal-info-container">
+    <!-- Sidebar with draggable items -->
+    <div class="sidebar">
+      <h3>Drag Items</h3>
+      <div cdkDropList [cdkDropListData]="draggableItems" class="draggable-list">
+        <div
+          *ngFor="let item of draggableItems"
+          cdkDrag
+          class="draggable-item"
+        >
+          {{ item }}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Main content area where items can be dropped -->
+    <div class="content-area">
+      <h2>Personal Information</h2>
+      <p>Fill out your personal information here.</p>
+      <div
+        cdkDropList
+        [cdkDropListData]="droppedItems"
+        (cdkDropListDropped)="onDrop($event)"
+        class="drop-area"
+      >
+        <div *ngFor="let item of droppedItems" class="dropped-item">
+          {{ item }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

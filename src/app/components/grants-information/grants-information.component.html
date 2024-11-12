@@ -1,0 +1,155 @@
+<div class="main-container" layout="row">
+    <!-- Left Column -->
+    <div class="left-align" layout="column">
+        <ul>
+            <li *ngFor="let field of fields; let i = index" (click)="selectField(i)">
+                {{ i + 1 }}. {{ field.label || field.name }} <!-- Display label or field type name -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Middle (Main) Content -->
+    <div class="container" layout="column">
+        <h2>Protocol management System</h2>
+        <p>Information about grants and funding.</p>
+
+        <!-- Display all fields in two columns -->
+        <div class="">
+            <div *ngFor="let field of fields; let i = index" class="field-item">
+                <!-- Apply label alignment class dynamically -->
+                <div>
+                    <div *ngIf="field.name === 'Input'">
+                        <label>{{ field.label || field.name }}:</label>
+                        <input type="text" [(ngModel)]="field.value" [placeholder]="field.placeholder"
+                            [style.width.px]="field.width" [ngClass]="getLabelAlignmentClass(field.labelAlignment)"
+                            [style.borderRadius.px]="field.borderRadius" [maxLength]="field.maxLength"
+                            [required]="field.required ?? false" />
+                    </div>
+                    <div *ngIf="field.name === 'Radio'" layout="row">
+                        <div class="form-check" layout="column">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Default radio
+                            </label>
+                        </div>
+                        <div class="form-check" layout="column">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
+                        </div>
+                    </div>
+                    <div *ngIf="field.name === 'select'">
+                        <label>{{ field.label || field.name }}:</label>
+                        <input *ngIf="field.name === 'select'" type="select" [(ngModel)]="field.value"
+                            [placeholder]="field.placeholder" [style.width.px]="field.width"
+                            [style.borderRadius.px]="field.borderRadius" [maxLength]="field.maxLength"
+                            [required]="field.required ?? false" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions" *ngIf="selectedFieldIndex !== null">
+            <!-- Right Button - Dropdown for file format options -->
+            <div class="dropdown-container" *ngIf="selectedFieldIndex !== null">
+                <button (click)="toggleDropdown('download')" class="right-button">Download</button>
+                <div *ngIf="isDownloadDropdownOpen" class="dropdown-menu">
+                    <ul>
+                        <li (click)="downloadFile('html')">HTML</li>
+                        <li (click)="downloadFile('json')">JSON</li>
+                        <li (click)="downloadFile('xml')">XML</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Right Column -->
+    <div class="right-section">
+        <!-- Add Field button - shown when search box is not open -->
+        <button *ngIf="!isAddFieldDropdownOpen" (click)="toggleDropdown('addField')" class="add-field-btn">
+            Add Field
+        </button>
+
+        <!-- Search box and dropdown list - shown when search box is open -->
+        <div *ngIf="isAddFieldDropdownOpen" class="dropdown-menu">
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search fields..." class="search-box" />
+            <ul>
+                <li *ngFor="let item of filteredFields" (click)="addField(item)">
+                    {{ item }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Dropdown to change the field type after it has been added -->
+        <div *ngIf="selectedFieldIndex !== null" class="change-field-dropdown">
+            <label>Change Field:</label>
+            <select [(ngModel)]="selectedFieldForChange" (change)="updateField(selectedFieldForChange)">
+                <option *ngFor="let field of availableFields" [value]="field">{{ field }}</option>
+            </select>
+        </div>
+
+        <!-- Settings for the selected field -->
+        <div *ngIf="selectedFieldIndex !== null" class="settings-section">
+            <h3>Field Settings</h3>
+            <div *ngIf="selectedFieldForChange === 'Input'">
+                <label>Label Name:</label>
+                <input type="text" [(ngModel)]="fields[selectedFieldIndex].label" />
+
+                <label>Placeholder:</label>
+                <input type="text" [(ngModel)]="fields[selectedFieldIndex].placeholder" />
+
+                <label>Width (px):</label>
+                <input type="number" [(ngModel)]="fields[selectedFieldIndex].width" />
+
+                <label>Border Radius (px):</label>
+                <input type="number" [(ngModel)]="fields[selectedFieldIndex].borderRadius" />
+
+                <label>Max Length:</label>
+                <input type="number" [(ngModel)]="fields[selectedFieldIndex].maxLength" />
+
+                <label>Required:</label>
+                <input type="checkbox" [(ngModel)]="fields[selectedFieldIndex].required" /> <br>
+
+                <!-- New: Label alignment options -->
+                <label>Label Alignment:</label>
+                <select [(ngModel)]="fields[selectedFieldIndex].labelAlignment">
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="side-by-side">Side by Side</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                </select>
+            </div>
+            <!-- Additional settings for other field types can go here -->
+            <div *ngIf="selectedFieldForChange === 'Radio'">
+                <label>Label Name:</label>
+                <input type="text" [(ngModel)]="fields[selectedFieldIndex].label" />
+
+                <label>Option 1 Name:</label>
+                <input type="text" [(ngModel)]="fields[selectedFieldIndex].option1" />
+
+
+                <input type="number" [(ngModel)]="fields[selectedFieldIndex].width" />
+
+                <label>Required:</label>
+                <input type="checkbox" [(ngModel)]="fields[selectedFieldIndex].required" /> <br>
+
+                <!-- New: Label alignment options -->
+                <label>Label Alignment:</label>
+                <select [(ngModel)]="fields[selectedFieldIndex].labelAlignment">
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="side-by-side">Side by Side</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+/* src/app/personal-information/personal-information.component.css */
+.container {
+    padding: 20px;
+  }
+  h2 {
+    color: #3f51b5;
+  }
+  .personal-info-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+  }
+  
+  .draggable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .draggable-item {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: move;
+    border-radius: 4px;
+  }
+  
+  .content-area {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .drop-area {
+    min-height: 100px;
+    padding: 10px;
+    border: 2px dashed #007bff;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  
+  .dropped-item {
+    padding: 8px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  
